@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>原型</title>
+</head>
+<body>
+<!--<script>
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+    this.sayHi = function() {
+      console.log('hi');
+    }
+  }
+
+  const s = new Peroson();
+  const s2 = new Peroson('lisi');
+//  console.log(s.sayHi === s2.sayHi);  false，说明地址不同
+</script>-->
+
+<!--<script>
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+  }
+  Peroson.prototype.sayHi = function() {
+    console.log('hi', this.name);
+  }
+
+  const s = new Peroson();
+  const s2 = new Peroson('lisi');
+  console.log(s.sayHi === s2.sayHi);
+  //  console.log(s.sayHi === s2.sayHi);  true
+</script>-->
+
+<!--<script>
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+  }
+  Peroson.prototype.sayHi = function() {
+    console.log('hi', this.name);
+  }
+
+  const s = new Peroson();
+  const arr = [];
+
+  /*
+  * 实例通过.__proto__属性才能访问构造函数的原型对象
+  * console.log(s.__proto__ === Peroson.prototype);  true
+  *
+  *
+  * console.log(Peroson.prototype.constructor === Peroson === s.constructor);  true
+  * console.log(Array.prototype.constructor === Array === arr.constructor);  true
+  * */
+</script>-->
+
+
+<script>
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+    /*this.toString = function () {
+      return 'Person to string';
+    }*/
+  }
+  Peroson.prototype.sayHi = function() {
+    console.log('hi', this.name);
+  }
+  /*Peroson.prototype.toString = function() {
+    return 'prototype to string';
+  }*/
+
+  const s = new Peroson();
+  console.log(s.toString());
+</script>
+</body>
+</html>

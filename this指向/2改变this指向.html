@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>继承</title>
+</head>
+<body>
+<button>click</button>
+<!--<script>
+  function test() {
+    console.log(this);  // window
+  }
+  test();
+</script>-->
+
+
+<!--<script>
+  const obj = {
+    name: 'aaa',
+    test() {
+      console.log(this === obj); // true
+    }
+  }
+  obj.test();
+</script>-->
+
+
+<!--<script>
+  function Test() {
+    console.log(this);
+  }
+  const test = new Test();
+</script>-->
+
+
+<!--<script>
+  const btn = document.getElementsByTagName('button')[0];
+  btn.addEventListener('click', function () {
+    console.log(this);
+  });
+</script>-->
+
+
+<!--<script>
+  setTimeout(function () {
+    console.log(this);
+  }, 200);
+</script>-->
+
+
+<script>
+  setTimeout(function () {
+    console.log(this);
+  }, 200);
+</script>
+</body>
+</html>

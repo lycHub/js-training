@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>继承</title>
+</head>
+<body>
+<!--<script>
+  // 原型继承
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+  }
+  Peroson.prototype.sayHi = function() {
+    return 'hi' + this.name;
+  }
+
+
+
+  function Student() {
+    this.score = 32;
+  }
+
+  Student.prototype = new Peroson();
+  Student.prototype.constructor = Student;
+
+  // 原型继承无法传参
+  const s = new Student();
+//  console.log(s.constructor === Peroson);  true
+</script>-->
+
+
+<!--<script>
+  // 实例继承
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+  }
+  Peroson.prototype.sayHi = function() {
+    return 'hi' + this.name;
+  }
+
+
+
+  function Student(name) {
+    Peroson.call(this, name); // 调用Peroson函数
+    this.score = 32;
+  }
+
+  const s = new Student('lisi');
+  console.log(s.name);
+  console.log(s.sayHi);
+</script>-->
+
+<!--
+<script>
+  // 组合继承
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+  }
+  Peroson.prototype.sayHi = function() {
+    return 'hi' + this.name;
+  }
+
+
+
+  function Student(name) {
+    Peroson.call(this, name);
+    this.score = 32;
+  }
+
+
+  Student.prototype = Peroson.prototype;
+
+  // 因为上面直接赋值，所以改变Student.prototype时也会改变Peroson.prototype
+  Student.prototype.getHobby = function () {
+    return 'snake';
+  }
+
+  const s = new Student('lisi');
+  console.log(s.name);
+  console.log(s.sayHi());
+  console.log(s.getHobby());
+
+  const p = new Peroson();
+  console.log('p', p.getHobby());
+</script>-->
+
+<script>
+  // 组合继承
+  function Peroson(name) {
+    this.name = name ||'张三';
+    this.age = 33;
+  }
+  Peroson.prototype.sayHi = function() {
+    return 'hi' + this.name;
+  }
+
+
+
+  function Student(name) {
+    Peroson.call(this, name);
+    this.score = 32;
+  }
+
+
+//  Student.prototype = Peroson.prototype;
+  /*for (const attr in Peroson.prototype) {
+    Student.prototype[attr] = Peroson.prototype[attr];
+  }*/
+
+  // 相当于创建了一个新对象， Student.prototype.constructor === Object
+//  Student.prototype = { ...Peroson.prototype };
+
+  /*
+  * 把Peroson.prototype的所有成员都挂在Student.prototype
+  *  Student.prototype.constructor === 把Peroson
+  * */
+  Student.prototype = Object.create(Peroson.prototype);
+  Student.prototype.constructor = Student;
+
+  Student.prototype.getHobby = function () {
+    return 'snake';
+  }
+
+  const s = new Student('lisi');
+//  console.log(s.name);
+//  console.log(s.sayHi());
+//  console.log(s.getHobby());
+//
+//  const p = new Peroson();
+//  console.log('p', p.getHobby());
+  console.log(s.constructor);
+</script>
+</body>
+</html>

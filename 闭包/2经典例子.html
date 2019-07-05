@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>改变this指向</title>
+</head>
+<body>
+<!--<script>
+  function fn(pre) {
+    console.log(pre + ' ' + this.name);
+  }
+
+  const obj = {
+    name: 'aaa'
+  };
+//  fn();
+//  fn.call(obj, 'call');
+  fn.apply(obj, ['apply']);
+</script>-->
+
+<!--<script>
+  function fn(pre) {
+    console.log(pre + ' ' + this.name);
+  }
+
+  const obj = {
+    name: 'aaa'
+  };
+  const myfn = fn.bind(obj, 'bind');
+  myfn();
+</script>-->
+
+
+<script>
+  // 应用
+  const obj = {
+    name: 'aaa'
+  };
+  console.log(obj.toString());  // '[object object]'
+
+  const arr = [2, 5];
+  console.log(arr.toString()); // '2,5'
+
+  console.log(Object.prototype.toString.call(arr)); // '[object Array]'
+</script>
+</body>
+</html>
