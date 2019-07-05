@@ -2,64 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>this</title>
+  <title>闭包</title>
 </head>
 <body>
-<button>click</button>
 <!--<script>
-  function test() {
-    console.log(this);  // window
+  function fn() {
+    const a = 10;
+    return a;
   }
-  test();
+  fn(); // 没发生闭包，函数调用后，fn里的a就没用了，被销毁
 </script>-->
-
-
-<!--<script>
-  const obj = {
-    name: 'aaa',
-    test() {
-      console.log(this === obj); // true
-    }
-  }
-  obj.test();
-</script>-->
-
-
-<!--<script>
-  function Test() {
-    console.log(this);
-  }
-  const test = new Test();
-</script>-->
-
-
-<!--<script>
-  const btn = document.getElementsByTagName('button')[0];
-  btn.addEventListener('click', function () {
-    console.log(this);
-  });
-</script>-->
-
-
-<!--<script>
-  setTimeout(function () {
-    console.log(this);
-  }, 200);
-</script>-->
-
 
 <script>
-  // 函数作为参数
-  function test(fn) {
-    fn();
-  }
-  const obj = {
-    name: 'aaa',
-    test() {
-      console.log(this); // window
+  function fn() {
+    // 作用域x
+    const a = 10;
+    return function () {
+      // 作用域y
+      return a; // 在y中可以访问到x中的变量
     }
   }
-  test(obj.test);
+  const f = fn();   // 到这步a还在被引用，没被销毁
+  console.log(f());
 </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>继承</title>
+  <title>this</title>
 </head>
 <body>
 <button>click</button>
@@ -49,9 +49,17 @@
 
 
 <script>
-  setTimeout(function () {
-    console.log(this);
-  }, 200);
+  // 函数作为参数
+  function test(fn) {
+    fn();
+  }
+  const obj = {
+    name: 'aaa',
+    test() {
+      console.log(this); // window
+    }
+  }
+  test(obj.test);
 </script>
 </body>
 </html>
