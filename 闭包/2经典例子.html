@@ -16,7 +16,7 @@
 <!--<script>
   // var a;  循环结束后a被覆盖成了5
   const lis = document.getElementsByTagName('li');
-  for (a = 0; a < lis.length; a++) {
+  for (var a = 0; a < lis.length; a++) {
     lis[a].addEventListener('click', function () {
       console.log(a); // 全是5
     });
@@ -25,7 +25,6 @@
 
 <!--<script>
   const lis = document.getElementsByTagName('li');
-
   // 因为let声明的变量不会被提升，相当于每次循环都重新let了一个变量
   // 也就是let了5个a, 存在每次循环中
   for (let a = 0; a < lis.length; a++) {
@@ -36,20 +35,9 @@
 </script>-->
 
 
+
+
 <!--<script>
-  const lis = document.getElementsByTagName('li');
-  for (a = 0; a < lis.length; a++) {
-    (function (i) {
-      lis[i].addEventListener('click', function () {
-        console.log(i); // 正常
-      })
-    })(a);
-  }
-</script>-->
-
-
-
-<script>
   // var a;  循环结束后a被覆盖成了5
   const lis = document.getElementsByTagName('li');
   for (a = 0; a < lis.length; a++) {
@@ -57,6 +45,35 @@
     lis[a].addEventListener('click', function () {
       console.log(this.index); // 正常
     });
+  }
+</script>-->
+
+
+
+
+<!--<script>
+  const lis = document.getElementsByTagName('li');
+  for (a = 0; a < lis.length; a++) {
+    showIndex(a);
+  }
+
+
+  function showIndex(i) {
+    lis[i].addEventListener('click', function () {
+      console.log(i); // 正常
+    });
+  }
+</script>-->
+
+
+<script>
+  const lis = document.getElementsByTagName('li');
+  for (a = 0; a < lis.length; a++) {
+    (function (i) {
+      lis[i].addEventListener('click', function () {
+        console.log(i); // 正常
+      })
+    })(a);
   }
 </script>
 </body>
