@@ -8,61 +8,24 @@
 </head>
 <body>
   <h1>函数被谁调用，this就指向谁</h1>
+
+
+
+
+
 <script>
-  // 直接调用
-  function test() {
+function Fn() {
+  setTimeout(function(){
     console.log(this);  // window
-  }
-  test();
+  }, 2000);
+  setTimeout(() => {
+    console.log(this);  // Fn
+  }, 2000);
+}
+new Fn();
 </script>
 
 
-<!--<script>
-  const obj = {
-    name: 'aaa',
-    test() {
-      console.log(this === obj); // true
-    }
-  }
-  obj.test();
-</script>-->
 
-
-<!--<script>
-  function Test() {
-    console.log(this);
-  }
-  const test = new Test();
-</script>-->
-
-
-<!--<script>
-  const btn = document.getElementsByTagName('button')[0];
-  btn.addEventListener('click', function () {
-    console.log(this);
-  });
-</script>-->
-
-
-<!--<script>
-  setTimeout(function () {
-    console.log(this);
-  }, 200);
-</script>-->
-
-
-<!-- <script>
-  // 函数作为参数
-  function test(fn) {
-    fn();
-  }
-  const obj = {
-    name: 'aaa',
-    test() {
-      console.log(this); // window
-    }
-  }
-  test(obj.test);
-</script> -->
 </body>
 </html>
