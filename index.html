@@ -11,13 +11,16 @@
 
 
 <script>
- function isArray(arg) {
-   if (Array.isArray) {
-     return Array.isArray(arg);
-   }else{
-     return Object.prototype.toString.call(arg) === '[object Array]';
-   }
- }
+function hero(name) {
+  this.name = name    // 在函数内部往实例（变量h）上挂一个实例属性
+  this.fight = function(){};   // 在函数内部往实例（变量h）上挂一个实例方法
+}
+const h = new hero('刘备');
+h.grade = 20	// 挂一个实例属性
+h.go = function(){};   // 挂一个实例方法
+
+h.name  // 实例直接调用
+h.go  // 实例直接调用
 </script>
 
 
