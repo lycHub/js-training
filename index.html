@@ -7,22 +7,17 @@
   <title>this指向</title>
 </head>
 <body>
-  <h1>函数被谁调用，this就指向谁</h1>
-
-
-
+  
 
 
 <script>
-function Fn() {
-  setTimeout(function(){
-    console.log(this);  // window
-  }, 2000);
-  setTimeout(() => {
-    console.log(this);  // Fn
-  }, 2000);
-}
-new Fn();
+ function isArray(arg) {
+   if (Array.isArray) {
+     return Array.isArray(arg);
+   }else{
+     return Object.prototype.toString.call(arg) === '[object Array]';
+   }
+ }
 </script>
 
 
