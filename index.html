@@ -10,25 +10,30 @@
   
 
 
-<script>
-function Hero(name, age, skills) {
-  this.name = name;
-  this.age = age;
-  this.skills = skills;
-  this.toString = function(){
-    return '实例上的toString';
-  }
-}
+  <script>
+  function Hero(name, age, skills) {
+      this.name = name;
+      this.age = age;
+      this.skills = skills;
+    }
+    
+    Hero.prototype.sayHi = function() {
+      console.log('hi' + this.name);
+    }
+    
+    
+    function LolHero(name) {
+      Hero.call(this, name);
+    };
+    
 
-Hero.prototype.sayHi = function() {
-  console.log('hi' + this.name);
-}
-Hero.prototype.toString = function(){
-  return '原型上的toString';
-}
-const dema = new Hero('德玛', 19);
-console.log(dema.toString());   // '实例上的toString'
-</script>
+    LolHero.prototype = Object.assign(LolHero.prototype,  Hero.prototype);
+    console.log(LolHero.prototype.constructor);   // LolHero
+
+    const dema = new LolHero('德玛');
+    console.log(dema instanceof Hero);      // false
+    console.log(dema instanceof LolHero);   // true
+    </script>
 
 
 
