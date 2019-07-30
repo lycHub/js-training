@@ -15,14 +15,19 @@ function Hero(name, age, skills) {
   this.name = name;
   this.age = age;
   this.skills = skills;
+  this.toString = function(){
+    return '实例上的toString';
+  }
 }
 
 Hero.prototype.sayHi = function() {
-  console.log('this :', this);
   console.log('hi' + this.name);
 }
+Hero.prototype.toString = function(){
+  return '原型上的toString';
+}
 const dema = new Hero('德玛', 19);
-console.log(Hero.prototype.constructor === Hero);
+console.log(dema.toString());   // '实例上的toString'
 </script>
 
 
