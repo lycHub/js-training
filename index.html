@@ -18,10 +18,11 @@ function Hero(name, age, skills) {
 }
 
 Hero.prototype.sayHi = function() {
+  console.log('this :', this);
   console.log('hi' + this.name);
 }
 const dema = new Hero('德玛', 19);
-console.dir(dema);
+console.log(Hero.prototype.constructor === Hero);
 </script>
 
 
