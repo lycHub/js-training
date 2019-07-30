@@ -7,33 +7,23 @@
   <title>this指向</title>
 </head>
 <body>
-  
+<ul>
+  <li>aaaaaa</li>
+  <li>bbbbb</li>
+  <li>ccccc</li>
+  <li>ddddd</li>
+  <li>eeeee</li>
+</ul>
 
 
-  <script>
-  function Hero(name, age, skills) {
-      this.name = name;
-      this.age = age;
-      this.skills = skills;
-    }
-    
-    Hero.prototype.sayHi = function() {
-      console.log('hi' + this.name);
-    }
-    
-    
-    function LolHero(name) {
-      Hero.call(this, name);
-    };
-    
-
-    LolHero.prototype = Object.assign(LolHero.prototype,  Hero.prototype);
-    console.log(LolHero.prototype.constructor);   // LolHero
-
-    const dema = new LolHero('德玛');
-    console.log(dema instanceof Hero);      // false
-    console.log(dema instanceof LolHero);   // true
-    </script>
+<script>
+  const lis = document.getElementsByTagName('li');
+  for (let a = 0; a < lis.length; a++) {
+    lis[a].addEventListener('click', function () {
+      console.log(a); // 索引输出正常
+    });
+  }
+</script>
 
 
 
