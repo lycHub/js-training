@@ -17,12 +17,60 @@
 
 
 <script>
-  function hero(name) {
-  console.log('this :', this);
-  return false;
+function Hero(name, age, skills) {
+  this.name = name;
+  this.age = age;
+  this.skills = skills;
 }
-const h = new hero('德玛');   // hero
-console.log('h :', h);
+
+Hero.prototype.sayHi = function() {
+  console.log('hi' + this.name);
+}
+Hero.prototype.obj = {
+  a: 'aaa',
+  b: 'bbb'
+}
+
+const dema = new Hero('德玛');
+
+
+function LolHero(name) {
+  Hero.call(this, name);
+};
+
+deepCopy(Hero.prototype, LolHero.prototype);
+
+const daTou = new LolHero('大头');
+daTou.obj.c = 'ccc';
+console.log('dema :', dema.obj);
+console.log('prototype :', Hero.prototype);
+console.log('daTou :', daTou.obj);
+
+
+
+function deepCopy(source, target) {
+  for(const attr in source) {
+    const item = source[attr];
+    if (isObject(item) || isArr(item)) {
+      target[attr] = isObject(item) ? {} : [];
+      deepCopy(item, target[attr]);
+    }else {
+      target[attr] = item;
+    }
+  }
+}
+
+ 
+  function isObject(arg) {
+    return Object.prototype.toString.call(arg) === '[object Object]';
+  }
+  function isArr(arg) {
+    if (Array.isArray) {
+      return  Array.isArray(arg);
+    }else{
+      return Object.prototype.toString.call(arg) === '[object Array]';
+    }
+  }
 </script>
 
 
