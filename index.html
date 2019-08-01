@@ -17,12 +17,12 @@
 
 
 <script>
-  const lis = document.getElementsByTagName('li');
-  for (let a = 0; a < lis.length; a++) {
-    lis[a].addEventListener('click', function () {
-      console.log(a); // 索引输出正常
-    });
-  }
+  function hero(name) {
+  console.log('this :', this);
+  return false;
+}
+const h = new hero('德玛');   // hero
+console.log('h :', h);
 </script>
 
 
